@@ -6,7 +6,7 @@
             <i class="fa fa-key"></i>Sign Up
             <span>Sign Up now and join with awesome event around the world.</span>
         </div>
-        <form class="we-form" method="post" action="{{ route('register') }}">
+        <form class="we-form" method="post" action="{{ route('register') }}" id="register-form">
             @csrf
             <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" placeholder="Full Name">
             @error('name')
@@ -47,7 +47,7 @@
                 </div class="caution-error">    
             @enderror
 
-            <input type="checkbox"><label>I agree with terms and service</label>
+            <input type="checkbox" name="terms" id="terms"><label>I agree with terms and service</label>
             <button type="submit" data-ripple="">Register</button>
         </form>
         

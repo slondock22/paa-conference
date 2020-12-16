@@ -6,7 +6,7 @@
             <i class="fa fa-key"></i>login
             <span>Sign in now and join wit the awesome event around the world.</span>
         </div>
-        <form class="we-form" method="post" action="{{ route('login') }}">
+        <form class="we-form" method="post" action="{{ route('login') }}" id="login-form">
             @csrf
             <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="Email">
             @error('email')
