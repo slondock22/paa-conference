@@ -54,7 +54,7 @@ class AgendaController extends Controller
     public function get_chat($agenda_id)
     {
 
-    	$data = DB::table('tx_chat_agenda as a')->leftjoin('users as b','a.user_id','b.id')->where('agenda_id',$agenda_id)->select('a.*','b.name as user_name')->get();
+    	$data = DB::table('tx_chat_agenda as a')->leftjoin('users as b','a.user_id','b.id')->leftjoin('tr_chat_status as c','a.chat_status','c.id')->where('agenda_id',$agenda_id)->select('a.*','b.name as user_name','c.status','c.label')->get();
     	return response()->json($data);
     }
 
@@ -96,10 +96,32 @@ class AgendaController extends Controller
     		return response()->json('ERROR',500);
     }
 
+     public function answered_chat(Request $request)
+    {
+        $chat_id = $request->chat_id;
+
+        $update_answered = DB::table('tx_chat_agenda')->where('id',$chat_id)->update([
+                                'chat_status' => '3'
+                            ]);
+
+        if($update_answered){
+            return response()->json('SENT',200);
+        }
+
+            return response()->json('ERROR',500);
+    }
+
     public function get_mark_chat($agenda_id)
     {
 
     	$data = DB::table('tx_chat_agenda as a')->leftjoin('users as b','a.user_id','b.id')->where('agenda_id',$agenda_id)->where('a.chat_status','2')->select('a.*','b.name as user_name')->get();
     	return response()->json($data);
+    }
+
+     public function get_answered_chat($agenda_id)
+    {
+
+        $data = DB::table('tx_chat_agenda as a')->leftjoin('users as b','a.user_id','b.id')->where('agenda_id',$agenda_id)->where('a.chat_status','3')->select('a.*','b.name as user_name')->get();
+        return response()->json($data);
     }
 }

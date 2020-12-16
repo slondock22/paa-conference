@@ -36,6 +36,9 @@ Route::middleware('auth')->group(function() {
 	Route::post('/send_chat/{agenda_id}',[AgendaController::class, 'send_chat'])->name('send_chat');
 	Route::post('/mark_chat',[AgendaController::class, 'mark_chat'])->name('mark_chat');
 	Route::get('/get_mark_chat/{agenda_id}',[AgendaController::class, 'get_mark_chat'])->name('get_mark_chat');
+	Route::get('/get_answered_chat/{agenda_id}',[AgendaController::class, 'get_answered_chat'])->name('get_answered_chat');
+	Route::post('/answered_chat',[AgendaController::class, 'answered_chat'])->name('answered_chat');
+
 
 
 
