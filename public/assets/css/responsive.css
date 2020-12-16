@@ -791,7 +791,7 @@
     padding: 6px 13px;
 }
 .message-writing-box > form > .text-area {
-    width: 81.5%;
+    width: 100%;
 }
 .media > ul > li{width: 37px;}
 
@@ -2625,7 +2625,7 @@ a.addnewforum {
 	margin: 0 10px;
 }	
 .message-writing-box > form > .text-area {
-    width: 79.5%;
+    width: 100%;
 }
 .postbox .we-video-info > button{
 	padding: 3px 10px;

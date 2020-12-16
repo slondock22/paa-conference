@@ -38,7 +38,7 @@
                 </div class="caution-error">    
             @enderror
 
-            <select class="form-control" name="country" id="country"> 
+            <select class="form-control @error('country') is-invalid @enderror" name="country" id="country"> 
 
             </select>
             @error('country')
@@ -47,7 +47,12 @@
                 </div class="caution-error">    
             @enderror
 
-            <input type="checkbox" name="terms" id="terms"><label>I agree with terms and service</label>
+            <input type="checkbox" name="terms" id="terms" class="@error('terms') is-invalid @enderror"><label>I agree with terms and service</label>
+             @error('terms')
+                <div class="caution-error">
+                    {{ $message }}
+                </div class="caution-error">    
+            @enderror
             <button type="submit" data-ripple="">Register</button>
         </form>
         
@@ -69,7 +74,7 @@
             $.each(data, function(key,val){
                 console.log(val.id);
                 $("#country").append('<option value="'+ val.id +'">'+ val.nicename +'</option>')
-                $('.chosen-results').trigger('chosen:updated');
+                $('#country').trigger('chosen:updated');
             });
         });
 
