@@ -666,6 +666,10 @@ header.sticky {
     position: relative;
 }
 
+.mh-head{
+    background: #34465d !important;
+}
+
 .logo {
     display: inline-block;
     vertical-align: inherit;
